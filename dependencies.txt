@@ -1,1 +1,2 @@
 boto3==1.29.4
+browsermob-proxy @ git+https://github.com/deepfield/browsermob-proxy-py.git@48accb7f17e776397f98ece63eabcd755d606f3e
