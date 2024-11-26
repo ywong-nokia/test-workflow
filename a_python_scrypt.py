@@ -5,3 +5,6 @@ def say_hi():
 
 def say_yo():
     print("yoyo")
+
+def say_gi():
+    print("gigi")
