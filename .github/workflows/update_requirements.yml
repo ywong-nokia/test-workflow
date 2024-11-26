@@ -1,7 +1,6 @@
 name: Check requirements process
 
 on:
-  merge_group:
   pull_request:
     types: [opened, synchronize, reopened]
 
