@@ -1,4 +1,4 @@
-name: Check requirements process
+name: Track updating requirements.txt process
 
 on:
   pull_request:
