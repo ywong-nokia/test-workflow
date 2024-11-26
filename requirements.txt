@@ -1,2 +1,12 @@
-boto3==1.29.3
+jmespath==1.0.1
+botocore==1.32.7
+certifi==2024.8.30
+charset-normalizer==3.4.0
+idna==3.10
+boto3==1.29.4
 browsermob-proxy @ git+https://github.com/deepfield/browsermob-proxy-py.git@48accb7f17e776397f98ece63eabcd755d606f3e
+urllib3==2.0.7
+python-dateutil==2.9.0.post0
+requests==2.32.3
+six==1.16.0
+s3transfer==0.7.0

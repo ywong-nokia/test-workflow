@@ -1,11 +1,8 @@
 name: Check requirements process
 
 on:
-  push:
-    paths:
-      - 'requirements.txt'
-      - 'dependencies.txt'
-
+  pull_request:
+    types: [opened, synchronize]
 jobs:
   check_requirements:
     runs-on: ubuntu-latest
@@ -25,6 +22,11 @@ jobs:
 
       - name: Generate requirements_check.txt
         run: pip freeze > requirements_check.txt
+
+      - name: Sort requirements.txt and requirements_check.txt
+        run: |
+          sort requirements.txt -o requirements.txt
+          sort requirements_check.txt -o requirements_check.txt
 
       - name: Compare requirements.txt with generated requirements_check.txt
         run: |
