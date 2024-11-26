@@ -30,7 +30,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
           with:
-            sparse-checkout: .
+            sparse-checkout: '.'
 
       - name: Set up Python
         uses: actions/setup-python@v5
