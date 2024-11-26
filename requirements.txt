@@ -1,12 +1,25 @@
-jmespath==1.0.1
+allure-behave==2.8.29
+allure-pytest==2.8.29
+allure-python-commons==2.8.29
+arrow==1.3.0
+attrs==24.2.0
+behave==1.2.6
+boto3==1.29.4
 botocore==1.32.7
+browsermob-proxy @ git+https://github.com/deepfield/browsermob-proxy-py.git@48accb7f17e776397f98ece63eabcd755d606f3e
 certifi==2024.8.30
 charset-normalizer==3.4.0
-boto3==1.29.4
-browsermob-proxy @ git+https://github.com/deepfield/browsermob-proxy-py.git@48accb7f17e776397f98ece63eabcd755d606f3e
-urllib3==2.0.7
+idna==3.10
+iniconfig==2.0.0
+jmespath==1.0.1
+packaging==24.2
+parse==1.20.2
+parse_type==0.6.4
+pluggy==1.5.0
+pytest==8.3.3
 python-dateutil==2.9.0.post0
 requests==2.32.3
-six==1.16.0
-idna==3.10
 s3transfer==0.7.0
+six==1.16.0
+types-python-dateutil==2.9.0.20241003
+urllib3==2.0.7
