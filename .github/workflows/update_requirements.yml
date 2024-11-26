@@ -1,8 +1,11 @@
 name: Check requirements process
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push:
+    paths:
+      - 'requirements.txt'
+      - 'dependencies.txt'
+
 jobs:
   check_requirements_txt:
     runs-on: ubuntu-latest
