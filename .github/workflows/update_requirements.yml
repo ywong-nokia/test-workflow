@@ -2,9 +2,29 @@ name: Check requirements process
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
+
 jobs:
-  check_requirements:
+  # Job to run change detection
+  track_dependency_files:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      changes_in_py_dependency_files: ${{ steps.changes.outputs.py_dependency_files }}
+    steps:
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            py_dependency_files:
+              - 'requirements.txt'
+              - 'dependencies.txt'
+
+  # Job to compare if process outlined in requirements-readme.md is followed
+  track_transitive_dependencies:
+    needs: track_dependency_files
+    if: ${{ needs.track_dependency_files.outputs.changes_in_py_dependency_files == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,10 +35,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Update pip
+        run: python -m pip install --upgrade pip
+
       - name: Install dependencies from dependencies.txt
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r dependencies.txt
+        run: pip install -r dependencies.txt
 
       - name: Generate requirements_check.txt
         run: pip freeze > requirements_check.txt
@@ -32,6 +53,8 @@ jobs:
         run: |
           if ! diff -u requirements.txt requirements_check.txt; then
             echo 'ERROR: requirements.txt is not up to date with dependencies.txt.'
-            echo 'Please follow the process to update requirements.txt from dependencies.txt.'
+            echo 'Please follow the process outlined in requirements-readme.md to update requirements.txt from dependencies.txt.'
+            echo 'Differences:'
+            diff -u requirements.txt requirements_check.txt || true
             exit 1
           fi
