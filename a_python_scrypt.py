@@ -1,4 +1,5 @@
 import os
+import random
 
 def say_hi():
     print("hihi")
