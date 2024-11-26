@@ -4,3 +4,4 @@ arrow==1.3.0
 backoff==2.2.1
 boto3==1.29.4
 browsermob-proxy @ git+https://github.com/deepfield/browsermob-proxy-py.git@48accb7f17e776397f98ece63eabcd755d606f3e
+ipdb==0.13.4
