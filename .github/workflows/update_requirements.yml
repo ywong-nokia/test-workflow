@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 jobs:
-  check_requirements:
+  check_requirements_txt:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -32,6 +32,6 @@ jobs:
         run: |
           if ! diff -u requirements.txt requirements_check.txt; then
             echo 'ERROR: requirements.txt is not up to date with dependencies.txt.'
-            echo 'Please follow the process to update requirements.txt from dependencies.txt.'
+            echo 'Please follow the process outlined in requirements-readme.md to update requirements.txt from dependencies.txt.'
             exit 1
           fi
