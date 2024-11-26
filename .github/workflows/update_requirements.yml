@@ -26,6 +26,11 @@ jobs:
       - name: Generate requirements_check.txt
         run: pip freeze > requirements_check.txt
 
+      - name: Sort requirements.txt and requirements_check.txt
+        run: |
+          sort requirements.txt -o requirements.txt
+          sort requirements_check.txt -o requirements_check.txt
+
       - name: Compare requirements.txt with generated requirements_check.txt
         run: |
           if ! diff -u requirements.txt requirements_check.txt; then
