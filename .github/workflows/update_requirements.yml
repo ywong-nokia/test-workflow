@@ -1,11 +1,6 @@
 name: Check requirements process
 
 on:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - 'requirements.txt'
-      - 'dependencies.txt'
   push:
     paths:
       - 'requirements.txt'
